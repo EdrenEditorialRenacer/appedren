@@ -1,0 +1,29 @@
+<div class="container p-4">
+    <div class="row">
+        {{#each archiveros}}
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <a href="#">
+                            <h3 class="card-title text-uppercase">
+                                {{titulo}}
+                            </h3>
+                        </a>
+                        <p>{{timeago created_at}}</p>
+                        <p>Genero: {{genero}}</p>
+                        <a href="/archiveros/delete/{{id}}" class="btn btn-danger">Delete</a>
+                        <a href="/archiveros/edit/{{id}}" class="btn btn-primary">Edit</a>
+                       
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <div class="col-md-4 mx-auto">
+                <div class="card card-body text-center">
+                    <p>No hay Archiveros guadados aun.</p>
+                    <a href="/archiveros/add">Crea uno!</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

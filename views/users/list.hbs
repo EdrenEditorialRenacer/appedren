@@ -1,0 +1,36 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Role</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Idioma</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{username}}</td>
+            <td>{{email}}</td>
+            <td>{{telefono}}</td>
+            <td>{{role}}</td>
+            <td>{{pais}}</td>
+            <td>{{idioma}}</td>
+
+            <td>
+                <a href="/users/delete/{{id}}" class="btn btn-danger">Delete </a>
+                <a href="/users/edit/{{id}}" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+        {{else}}
+        <h2>No Hay Usuarios Registrados</h2>
+        {{/each}}
+
+
+    </tbody>
+</table>

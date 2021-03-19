@@ -1,0 +1,45 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/archiveros/edit/{{archivero.id}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" value="{{archivero.titulo}}"  class="form-control" name="titulo" placeholder="Titulo" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" value="{{archivero.genero}}" class="form-control" name="genero" placeholder="Genero">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" value="{{archivero.precio}}" class="form-control" name="precio" placeholder="Precio">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="modulos" >
+                                <option value="{{archivero.modulos}}">{{archivero.modulos}}</option>
+                                <option value="libros">Libros</option>
+                                <option value="revistas">Revistas</option>
+                                <option value="comics">Comics</option>
+                                <option value="musica">Musica</option>
+                                <option value="peliculas">Peliculas</option>
+                                <option value="videos">Videos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="roles" aria-selected="{{archivero.roles}}">
+                                <option value="{{archivero.roles}}">{{archivero.roles}}</option>
+                                <option value="free">Free</option>
+                                <option value="premium">Premium</option>
+                                <option value="shop">Shop</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Editar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
