@@ -89,6 +89,7 @@ app.use('/free', require('./routes/free'));
 app.use('/premium', require('./routes/premium'));
 app.use('/shop', require('./routes/shop'));
 app.use('/users',require('./routes/users'));
+
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'images')));
