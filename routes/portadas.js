@@ -3,6 +3,7 @@ const pool = require('../database');
 const router = express.Router();
 const helper =require('../lib/handlebars')
 const {isLoggedIn} =require('../lib/auth');
+const helpers = require('../lib/helpers');
 
 router.get('/add',isLoggedIn, async (req, res) => {
     const archiveros = await pool.query('SELECT * FROM archiveros');
@@ -10,7 +11,7 @@ router.get('/add',isLoggedIn, async (req, res) => {
     res.render('portadas/add', { archiveros });
 });
 
-router.post('/add',isLoggedIn, helper.upload.single('portada'), async (req, res) => {
+router.post('/add',isLoggedIn, helper.mutiPartMiddleware, async (req, res) => {
     const { idarchivero } = req.body;
     const portada= req.file.filename;
     await pool.query('INSERT INTO portadas(portada,idarchivero) values (?,?)', [portada,idarchivero]);

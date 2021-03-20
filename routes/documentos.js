@@ -9,7 +9,7 @@ router.get('/add',isLoggedIn, async (req, res) => {
     res.render('documentos/add', { archiveros });
 });
 
-router.post('/add',isLoggedIn, helper.upload.single('documento'), async (req, res) => {
+router.post('/add',isLoggedIn, helper.mutiPartMiddleware, async (req, res) => {
     const { idarchivero } = req.body;
     const documento= req.file.filename;
     await pool.query('INSERT INTO documentos(documento,idarchivero) values (?,?)', [documento,idarchivero]);
