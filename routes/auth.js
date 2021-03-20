@@ -25,7 +25,7 @@ router.post('/signin', isNotLoggedIn,(req,res,next)=>{
     })(req,res,next);
 });
 
-router.get('/home',isLoggedIn, (req, res) => {
+router.get('/home', (req, res) => {
     res.render('home');
 });
 

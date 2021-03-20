@@ -7,7 +7,7 @@ router.get('/add', (req,res) => {
     res.render('users/add');
 });
 
-router.post('/add', async (req,res)=>{
+router.post('/add',isLoggedIn, async (req,res)=>{
     const {username,email,telefono,password,role,pais,idioma } = req.body
     const newUser = {
         username,
@@ -24,7 +24,7 @@ router.post('/add', async (req,res)=>{
     res.redirect('/users')
 });
 
-router.get('/', async (req,res)=>{
+router.get('/',isLoggedIn, async (req,res)=>{
     const users = await pool.query('SELECT * FROM users');
     console.log(users);
     res.render('users/list', { users });
