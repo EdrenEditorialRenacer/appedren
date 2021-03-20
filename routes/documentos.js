@@ -11,8 +11,17 @@ router.get('/add',isLoggedIn, async (req, res) => {
 
 router.post('/add',isLoggedIn, helper.mutiPartMiddleware, async (req, res) => {
     const { idarchivero } = req.body;
-    const documento= req.file.filename;
-    await pool.query('INSERT INTO documentos(documento,idarchivero) values (?,?)', [documento,idarchivero]);
+    const path = req.files.documento.path;
+
+    console.log(path);
+    const documento = path.slice(7, 100);
+
+    const newDocumento = {
+        documento,
+        idarchivero
+    }
+
+    await pool.query('INSERT INTO documentos set ?', [newDocumento]);
     req.flash('success', 'Guardado con Exito!');
     res.redirect('/documentos');
 });
