@@ -17,20 +17,7 @@ router.get('/documento/:id',isLoggedIn, async (req,res) => {
 
 
 router.get('/all',isLoggedIn, async (req, res) => {
-    const allvideos = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
-    INNER JOIN autores u ON a.idautor = u.id
-    INNER JOIN portadas p ON p.idarchivero = a.id
-    INNER JOIN documentos d ON d.idarchivero = a.id
-    WHERE a.modulos ='videos' AND a.roles = 'free'
-    ORDER BY RAND() LIMIT 10`);
-    const allmusica = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
-    INNER JOIN autores u ON a.idautor = u.id
-    INNER JOIN portadas p ON p.idarchivero = a.id
-    INNER JOIN documentos d ON d.idarchivero = a.id
-    WHERE a.modulos = 'musica' AND a.roles = 'free'
-    ORDER BY RAND() LIMIT 10`);
-    
-    res.render('free/all',{allvideos},{allmusica});
+    res.render('free/all');
 });
 
 router.get('/libros',isLoggedIn, async (req, res) => {

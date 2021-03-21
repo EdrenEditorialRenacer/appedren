@@ -1,32 +1,48 @@
 <div class="contentt">
-    {{#each allvideos}}
+   
     <div class="modull">
+<a href="/free/libros">
+<img src="" alt="">
+<h4>Libros</h4>
+</a>
+      
+    </div>
+   
+    <div class="modull">
+       <a href="/free/revistas">
+<img src="" alt="">
+<h4>Revistas</h4>
+</a>
+     
+    </div>
+  
+    <div class="modull">
+          <a href="/free/comics">
+<img src="" alt="">
+<h4>Comics</h4>
+</a>
+    </div>
 
-        <h2>{{titulo}}</h2>
-        <img src="../{{portada}}" alt="{{portada}}" width="200px" height="150px">
-        <h1>{{autor}}</h1>
-
-        <video width="100%" autoplay controls controlsList="nodownload">
-            <source src="../{{documento}}" type="video/mp4">
-        </video>
-    </div>
-    {{else}}
     <div class="modull">
-        <p>No hay Videos aun en existencia.</p>
+  <a href="/free/musica">
+<img src="" alt="">
+<h4>Musica</h4>
+</a>
+      
     </div>
-    {{/each}}
-    <hr>
-    {{#each allmusica}}
+   
     <div class="modull">
-        <h2>{{titulo}}</h2>
-        <img src="../{{portada}}" alt="{{portada}}" width="200px" height="150px">
-        <h1>{{autor}}</h1>
-        <audio id="sonido" src="../{{documento}}" controls controlsList="nodownload">
-        </audio>
+         <a href="/free/peliculas">
+<img src="" alt="">
+<h4>Peliculas</h4>
+</a>
     </div>
-    {{else}}
+  
     <div class="modull">
-        <p>No hay Musica aun en existencia.</p>
+          <a href="/free/videos">
+<img src="" alt="">
+<h4>Series y Videos</h4>
+</a>
     </div>
-    {{/each}}
+    
 </div>
