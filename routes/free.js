@@ -3,6 +3,7 @@ const pool = require('../database');
 const router = express.Router();
 const {isLoggedIn} =require('../lib/auth');
 
+
 router.get('/documento/:id',isLoggedIn, async (req,res) => {
     const { id } =req.params;
     const documentos = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
@@ -16,14 +17,20 @@ router.get('/documento/:id',isLoggedIn, async (req,res) => {
 
 
 router.get('/all',isLoggedIn, async (req, res) => {
-    const all = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
+    const allvideos = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
     INNER JOIN portadas p ON p.idarchivero = a.id
     INNER JOIN documentos d ON d.idarchivero = a.id
-    WHERE a.roles = 'free'
+    WHERE a.modulos ='videos' AND a.roles = 'free'
+    ORDER BY RAND() LIMIT 10`);
+    const allmusica = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
+    INNER JOIN autores u ON a.idautor = u.id
+    INNER JOIN portadas p ON p.idarchivero = a.id
+    INNER JOIN documentos d ON d.idarchivero = a.id
+    WHERE a.modulos = 'musica' AND a.roles = 'free'
     ORDER BY RAND() LIMIT 10`);
     
-    res.render('free/all',{all});
+    res.render('free/all',{allvideos},{allmusica});
 });
 
 router.get('/libros',isLoggedIn, async (req, res) => {
