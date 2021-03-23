@@ -5,9 +5,9 @@
             <div class="card text-center">
                 <div class="card-body">
                     <h2>{{titulo}}</h2>
-                    <video src="../{{documento}}" width="640" height="480"></video>
-
-                   
+                     <video width="100%" autoplay controls controlsList="nodownload">
+                        <source src="../{{documento}}" type="video/mp4">
+                    </video>
                     <h1>{{autor}}</h1>
                     <p>{{facebook}}</p>
                         <p>{{whattsap}}</p>
