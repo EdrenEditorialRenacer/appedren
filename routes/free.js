@@ -16,7 +16,7 @@ router.get('/documento/:id',isLoggedIn,authRole('user_free'),async (req,res) => 
 });
 
 
-router.get('/all',isLoggedIn,authRole('user_free'), async (req, res) => {
+router.get('/all',isLoggedIn, async (req, res) => {
     res.render('free/all');
 });
 
