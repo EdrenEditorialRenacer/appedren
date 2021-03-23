@@ -1,19 +1,13 @@
 <div class="container p-4">
     <div class="row">
         {{#each peliculas}}
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h2>{{titulo}}</h2>
-                    <video autoplay controls src="../{{documento}}"  controlsList="nodownload"></video>
-                    
-            
-                    <h1>{{autor}}</h1>
-                    <p>{{facebook}}</p>
-                        <p>{{whattsap}}</p>
-                        <p>{{email}}</p>
-                </div>
-            </div>
+        <div class="modulle">
+            <h2>{{titulo}}</h2>
+            <video autoplay controls src="../{{documento}}" controlsList="nodownload"></video>
+            <h1>{{autor}}</h1>
+            <p>facebook: {{facebook}}</p>
+            <p>whattsap: {{whattsap}}</p>
+            <p>email: {{email}}</p>
         </div>
         {{else}}
         <div class="col-md-4 mx-auto">
