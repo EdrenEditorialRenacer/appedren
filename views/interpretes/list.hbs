@@ -1,0 +1,33 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Interprete</th>
+            <th scope="col">Facebook</th>
+            <th scope="col">WhattSap</th>
+            <th scope="col">Email</th>
+            <th scope="col">Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each interpretes}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{interprete}}</td>
+            <td>{{facebook}}</td>
+            <td>{{whattsap}}</td>
+            <td>{{email}}</td>
+            <td>{{timeago created_at}}</td>
+            <td>
+                <a href="/autores/delete/{{id}}" class="btn btn-danger">Delete </a>
+                <a href="/autores/edit/{{id}}" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+        {{else}}
+        <h2>No hay Interpretes Registrados</h2>
+        {{/each}}
+
+
+    </tbody>
+</table>

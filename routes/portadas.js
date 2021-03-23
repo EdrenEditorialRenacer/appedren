@@ -2,16 +2,16 @@ const express = require('express');
 const pool = require('../database');
 const router = express.Router();
 const helper = require('../lib/handlebars')
-const { isLoggedIn } = require('../lib/auth');
+const { isLoggedIn,authRole } = require('../lib/auth');
 const helpers = require('../lib/helpers');
 
-router.get('/add', isLoggedIn, async (req, res) => {
+router.get('/add', isLoggedIn,authRole('admin'), async (req, res) => {
     const archiveros = await pool.query('SELECT * FROM archiveros');
     console.log(archiveros);
     res.render('portadas/add', { archiveros });
 });
 
-router.post('/add', isLoggedIn, helper.mutiPartMiddleware, async (req, res) => {
+router.post('/add', isLoggedIn,authRole('admin'),helper.mutiPartMiddleware, async (req, res) => {
     const { idarchivero } = req.body;
     const path = req.files.portada.path;
 
@@ -29,7 +29,7 @@ router.post('/add', isLoggedIn, helper.mutiPartMiddleware, async (req, res) => {
     res.redirect('/portadas');
 });
 
-router.get('/', isLoggedIn, async (req, res) => {
+router.get('/', isLoggedIn,authRole('admin'), async (req, res) => {
     const portadas = await pool.query('SELECT * FROM portadas');
     console.log(portadas);
     res.render('portadas/list', { portadas });

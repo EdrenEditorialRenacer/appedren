@@ -4,53 +4,53 @@ const router = express.Router();
 const {isLoggedIn,authRole} =require('../lib/auth');
 
 router.get('/add', (req,res) => {
-    res.render('autores/add');
+    res.render('interpretes/add');
 });
 
 router.post('/add',isLoggedIn,authRole('admin'), async (req,res)=>{
-    const {autor,facebook,whattsap,email } = req.body
-    const newAutor = {
-        autor,
+    const {interprete,facebook,whattsap,email } = req.body
+    const newInterprete = {
+        interprete,
         facebook,
         whattsap,
         email
     }
-    console.log(newAutor);
-    await pool.query('INSERT INTO autores set ?',[newAutor]);
+    
+    await pool.query('INSERT INTO interpretes set ?',[newInterprete]);
     req.flash('success',"Agregado con Exito");
-    res.redirect('/autores')
+    res.redirect('/interpretes')
 });
 
 router.get('/',isLoggedIn,authRole('admin'), async (req,res)=>{
-    const autores = await pool.query('SELECT * FROM autores');
-    console.log(autores);
-    res.render('autores/list', { autores });
+    const interpretes = await pool.query('SELECT * FROM interpretes');
+   
+    res.render('interpretes/list', { interpretes });
 });
 
 
 router.get('/delete/:id',isLoggedIn,authRole('admin'), async (req,res)=>{
     const {id} = req.params;
-    await pool.query('DELETE FROM autores WHERE id = ?',[id]);
+    await pool.query('DELETE FROM interpretes WHERE id = ?',[id]);
     req.flash('success',"Eliminado con Exito");
-    res.redirect('/autores');
+    res.redirect('/interpretes');
 });
 
 router.get('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=>{
     const { id } = req.params;
-     const autores= await pool.query('SELECT * FROM autores WHERE id=?',[id]);
-    res.render('autores/edit', {autor: autores[0]});
+     const interpretes= await pool.query('SELECT * FROM autores WHERE id=?',[id]);
+    res.render('interpretes/edit', {inter: interpretes[0]});
 });
 
 router.post('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=> {
     const {id} =req.params;
-    const {autor,facebook,whattsap,email } = req.body
-    const newAutor = {
-        autor,
+    const {interprete,facebook,whattsap,email } = req.body
+    const newInterprete = {
+        interprete,
         facebook,
         whattsap,
         email
     }
-    await pool.query('UPDATE autores set ? WHERE id = ?',[newAutor,id]);
+    await pool.query('UPDATE interpretes set ? WHERE id = ?',[newInterprete,id]);
     req.flash('success',"Editado con Exito!")
     res.redirect('/autores');
 })

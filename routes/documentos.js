@@ -2,14 +2,14 @@ const express = require('express');
 const pool = require('../database');
 const router = express.Router();
 const helper =require('../lib/handlebars')
-const {isLoggedIn} =require('../lib/auth');
-router.get('/add',isLoggedIn, async (req, res) => {
+const {isLoggedIn,authRole} =require('../lib/auth');
+router.get('/add',isLoggedIn,authRole('admin'), async (req, res) => {
     const archiveros = await pool.query('SELECT * FROM archiveros');
     console.log(archiveros);
     res.render('documentos/add', { archiveros });
 });
 
-router.post('/add',isLoggedIn, helper.mutiPartMiddleware, async (req, res) => {
+router.post('/add',isLoggedIn,authRole('admin'), helper.mutiPartMiddleware, async (req, res) => {
     const { idarchivero } = req.body;
     const path = req.files.documento.path;
 
@@ -26,7 +26,7 @@ router.post('/add',isLoggedIn, helper.mutiPartMiddleware, async (req, res) => {
     res.redirect('/documentos');
 });
 
-router.get('/',isLoggedIn, async (req, res) => {
+router.get('/',isLoggedIn,authRole('admin'), async (req, res) => {
     const documentos = await pool.query('SELECT * FROM documentos');
     console.log(documentos);
     res.render('documentos/list', { documentos });

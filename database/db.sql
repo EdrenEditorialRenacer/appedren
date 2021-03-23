@@ -31,11 +31,26 @@ CREATE TABLE autores(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE interpretes(
+    id INT (11) AUTO_INCREMENT,
+    interprete VARCHAR(100) NOT NULL,
+    facebook VARCHAR(100) NOT NULL,
+    whattsap VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,          
+    created_at timestamp NOT NULL DEFAULT current_timestamp,
+    UNIQUE(interprete),
+    UNIQUE(email),
+    UNIQUE(whattsap),
+    UNIQUE(facebook),
+    PRIMARY KEY(id)
+);
+
 
 CREATE TABLE archiveros(
     id INT (11) AUTO_INCREMENT,
     titulo VARCHAR(255) NOT NULL,
     idautor INT (11) NOT NULL,
+    idinterprete INT (11) NULL,
     genero VARCHAR(255) NOT NULL,
     precio DOUBLE(8,2) NOT NULL,
     modulos VARCHAR(255) NOT NULL,
@@ -43,7 +58,8 @@ CREATE TABLE archiveros(
     created_at timestamp NOT NULL DEFAULT current_timestamp,
     UNIQUE(titulo),
     PRIMARY KEY(id),
-    FOREIGN KEY (idautor) references autores(id)
+    FOREIGN KEY (idautor) references autores(id),
+    FOREIGN KEY (idinterprete) references interpretes(id)
 );
 
 
