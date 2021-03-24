@@ -3,10 +3,10 @@
         {{#each videos}}
         <div class="modulle">
             <h2>{{titulo}}</h2>
-            
 
-            <video autoplay controls  preload="auto"  controlsList="nodownload">
-                <source src="../{{documento}}" type="video/mp4"/>
+
+            <video autoplay controls preload="auto" controlsList="nodownload" poster="../{{portada}}">
+                <source src="../{{documento}}" type="video/mp4" />
             </video>
             <h1>{{autor}}</h1>
             <p>facebook: {{facebook}}</p>
