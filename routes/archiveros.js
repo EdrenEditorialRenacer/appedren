@@ -6,7 +6,7 @@ router.get('/add',isLoggedIn,authRole('admin'), async (req, res) => {
     const autores = await pool.query('SELECT * FROM autores');
     const interpretes = await pool.query('SELECT * FROM interpretes');
     console.log(autores);
-    res.render('archiveros/add',{autores},{interpretes});
+    res.render('archiveros/add',{autores,interpretes});
 });
 
 router.post('/add',isLoggedIn,authRole('admin'), async (req, res) => {
