@@ -16,7 +16,10 @@ router.post('/add', isLoggedIn, authRole('admin'), async (req, res) => {
         email
     }
     const newAutorDataEmpty = {
-        autor
+        autor,
+        facebook = '',
+        whattsap = '',
+        email = ''
     }
 
     if (!(req.body.facebook == null && req.body.whattsap == null && req.body.email == null)) {
@@ -24,7 +27,7 @@ router.post('/add', isLoggedIn, authRole('admin'), async (req, res) => {
         req.flash('success', "Agregado con Exito");
         res.redirect('/autores')
     } else {
-        await pool.query('INSERT INTO autores(autor) VALUES (?)', newAutorDataEmpty.autor);
+        await pool.query('INSERT INTO autores set ?', [newAutorDataEmpty]);
         req.flash('success', "Agregado con Exito");
         res.redirect('/autores');
     }
