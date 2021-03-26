@@ -8,24 +8,7 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/add', isLoggedIn, authRole('admin'), async (req, res) => {
-    const newAutor = {};
-    if (req.body.facebook === '' && req.body.whattsap === '' && req.body.email === '') {
-        const { autor } = req.body;
-        newAutor = {
-            autor
-        }
-    } else {
-        const { autor, facebook, whattsap, email } = req.body;
-        newAutor = {
-            autor,
-            facebook,
-            whattsap,
-            email
-        }
-    }
-
-    console.log(newAutor);
-    await pool.query('INSERT INTO autores set ?', [newAutor]);
+    await pool.query('INSERT INTO autores set ?', [req.body]);
     req.flash('success', "Agregado con Exito");
     res.redirect('/autores')
 });
