@@ -21,7 +21,7 @@ router.post('/add',isLoggedIn,authRole('admin'), async (req,res)=>{
          req.flash('success',"Agregado con Exito");
     res.redirect('/autores')
     }else{
-        await pool.query('INSERT INTO autores (autor) VALUES (?)',[newAutor.autor]);
+        await pool.query(`INSERT INTO autores (autor) VALUES (`+newAutor.autor+`);`);
         req.flash('success',"Agregado con Exito");
         res.redirect('/autores')
     }
