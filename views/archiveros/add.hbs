@@ -9,7 +9,7 @@
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="idautor">
-                                <option value="0">Selecciona un Autor</option>
+                                <option value="none">Selecciona un Autor</option>
                                 {{#each autores}}
                                 <option value="{{id}}">{{autor}}</option>
                                 {{/each}}
@@ -17,7 +17,7 @@
                         </div>
                          <div class="form-group">
                             <select class="form-control" name="idinterprete">
-                                <option value="none">Selecciona un Interprete</option>
+                                <option value="">Selecciona un Interprete</option>
                                 {{#each interpretes}}
                                 <option value="{{id}}">{{interprete}}</option>
                                 {{/each}}
