@@ -29,6 +29,10 @@ router.get('/home',isLoggedIn, (req, res) => {
     res.render('home');
 });
 
+router.get('/contacto', (req,res)=>{
+    res.render('contacto');
+});
+
 
 
 router.get('/logout',(req,res)=>{
