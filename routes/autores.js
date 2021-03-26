@@ -11,9 +11,9 @@ router.post('/add',isLoggedIn,authRole('admin'), async (req,res)=>{
     const {autor,facebook,whattsap,email } = req.body;
     const newAutor = {
         autor,
-        facebook?,
-        whattsap?,
-        email?
+        facebook,
+        whattsap,
+        email
     }
     console.log(newAutor);
     await pool.query('INSERT INTO autores set ?',[newAutor]);
