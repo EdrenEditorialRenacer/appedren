@@ -17,9 +17,9 @@ router.post('/add', isLoggedIn, authRole('admin'), async (req, res) => {
     }
     const newAutorDataEmpty = {
         autor,
-        facebook = '',
-        whattsap = '',
-        email = ''
+        facebook: '',
+        whattsap: '',
+        email: ''
     }
 
     if (!(req.body.facebook == null && req.body.whattsap == null && req.body.email == null)) {
