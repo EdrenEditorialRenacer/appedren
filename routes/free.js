@@ -51,7 +51,7 @@ router.get('/comics',isLoggedIn,authRole('user_free'), async (req, res) => {
 });
 
 router.get('/musica',isLoggedIn,authRole('user_free'), async (req, res) => {
-    const musica = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento,u.facebook,u.whattsap,u.email FROM archiveros a 
+    const musica = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento,u.facebook,u.whattsap,u.email,i.interprete FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
     INNER JOIN interpretes i ON a.idinterprete = i.id
     INNER JOIN portadas p ON p.idarchivero = a.id
