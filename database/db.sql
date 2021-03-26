@@ -20,28 +20,28 @@ CREATE TABLE users(
 CREATE TABLE autores(
     id INT (11) AUTO_INCREMENT,
     autor VARCHAR(100) NOT NULL,
-    facebook VARCHAR(100) NOT NULL,
-    whattsap VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,          
+    -- facebook VARCHAR(100) NULL,
+    -- whattsap VARCHAR(100) NULL,
+    -- email VARCHAR(100) NULL,          
     created_at timestamp NOT NULL DEFAULT current_timestamp,
     UNIQUE(autor),
-    UNIQUE(email),
-    UNIQUE(whattsap),
-    UNIQUE(facebook),
+    -- UNIQUE(email),
+    -- UNIQUE(whattsap),
+    -- UNIQUE(facebook),
     PRIMARY KEY(id)
 );
 
 CREATE TABLE interpretes(
     id INT (11) AUTO_INCREMENT,
     interprete VARCHAR(100) NOT NULL,
-    facebook VARCHAR(100) NOT NULL,
-    whattsap VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,          
+    -- facebook VARCHAR(100) NULL,
+    -- whattsap VARCHAR(100) NULL,
+    -- email VARCHAR(100) NULL,          
     created_at timestamp NOT NULL DEFAULT current_timestamp,
     UNIQUE(interprete),
-    UNIQUE(email),
-    UNIQUE(whattsap),
-    UNIQUE(facebook),
+    -- UNIQUE(email),
+    -- UNIQUE(whattsap),
+    -- UNIQUE(facebook),
     PRIMARY KEY(id)
 );
 

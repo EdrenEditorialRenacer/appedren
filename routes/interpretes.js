@@ -8,12 +8,9 @@ router.get('/add', (req,res) => {
 });
 
 router.post('/add',isLoggedIn,authRole('admin'), async (req,res)=>{
-    const {interprete,facebook,whattsap,email } = req.body
+    const {interprete } = req.body
     const newInterprete = {
-        interprete,
-        facebook,
-        whattsap,
-        email
+        interprete
     }
     
     await pool.query('INSERT INTO interpretes set ?',[newInterprete]);
