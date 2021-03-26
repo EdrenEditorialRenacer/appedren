@@ -18,7 +18,7 @@ router.post('/add', isLoggedIn, authRole('admin'), async (req, res) => {
     const newAutorDataEmpty = {
         autor
     }
-    console.log(newAutor);
+
     if (!(req.body.facebook == null && req.body.whattsap == null && req.body.email == null)) {
         await pool.query('INSERT INTO autores set ?', [newAutorDataFull]);
         req.flash('success', "Agregado con Exito");
