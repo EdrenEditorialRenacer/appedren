@@ -16,9 +16,17 @@ router.post('/add',isLoggedIn,authRole('admin'), async (req,res)=>{
         email
     }
     console.log(newAutor);
-    await pool.query('INSERT INTO autores set ?',[newAutor]);
-    req.flash('success',"Agregado con Exito");
+    if(!(newAutor.facebook == null && newAutor.whattsap == null && newAutor.email == null)){
+         await pool.query('INSERT INTO autores set ?',[newAutor]);
+         req.flash('success',"Agregado con Exito");
     res.redirect('/autores')
+    }else{
+        await pool.query('INSERT INTO autores (autor) VALUES (?)',[newAutor.autor]);
+        req.flash('success',"Agregado con Exito");
+        res.redirect('/autores')
+    }
+   
+    
 });
 
 router.get('/',isLoggedIn,authRole('admin'), async (req,res)=>{
