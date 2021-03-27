@@ -16,6 +16,15 @@ CREATE TABLE users(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE comentarios(
+    id INT(11) AUTO_INCREMENT,
+    asunto varchar(100) NOT NULL,
+    comentario text NOT NULL,
+    iduser int (11) NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (iduser) references users(id),
+);
+
 
 CREATE TABLE autores(
     id INT (11) AUTO_INCREMENT,
