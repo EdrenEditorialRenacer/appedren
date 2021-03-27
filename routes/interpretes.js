@@ -40,13 +40,13 @@ router.get('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=>{
 
 router.post('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=> {
     const {id} =req.params;
-    const {interprete } = req.body
+    const {interprete } = req.body;
     const newInterprete = {
         interprete,
     }
     await pool.query('UPDATE interpretes set ? WHERE id = ?',[newInterprete,id]);
     req.flash('success',"Editado con Exito!")
-    res.redirect('/autores');
+    res.redirect('/interpretes');
 })
 
 module.exports = router;
