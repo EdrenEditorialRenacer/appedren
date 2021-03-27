@@ -56,6 +56,7 @@ router.post('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=> {
         idioma,
         password
     }
+    newUser.password = await helpers.encryptPassword(password);
     await pool.query('UPDATE users set ? WHERE id = ?',[newUser,id]);
     req.flash('success',"Editado con Exito!")
     res.redirect('/users');
