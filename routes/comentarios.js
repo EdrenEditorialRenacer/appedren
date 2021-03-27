@@ -15,7 +15,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
         comentario,
         iduser
     }
-    newComentario.iduser = user.id;
+   
 
     await pool.query('INSERT INTO comentarios set ?', [newComentario]);
     req.flash('success', "Comentario Enviado con Exito");
