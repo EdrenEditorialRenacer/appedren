@@ -1,3 +1,8 @@
+const express = require('express');
+const pool = require('../database');
+const router = express.Router();
+const { isLoggedIn, authRole } = require('../lib/auth');
+
 router.get('/add', (req, res) => {
     res.render('comentarios/add');
 });
@@ -26,3 +31,5 @@ router.get('/mensajes',isLoggedIn,authRole('admin'),async (req, res) => {
   `);
     res.render('comentarios/list', { comentarios });
 });
+
+module.exports = router;
