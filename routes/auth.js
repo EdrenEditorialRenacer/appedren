@@ -17,6 +17,8 @@ router.get('/signin', isNotLoggedIn, (req, res) => {
     res.render('auth/signin');
 });
 
+
+
 router.post('/signin', isNotLoggedIn, (req, res, next) => {
     passport.authenticate('local.signin', {
         successRedirect: '/home',

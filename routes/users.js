@@ -46,14 +46,15 @@ router.get('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=>{
 
 router.post('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=> {
     const {id} =req.params;
-    const {username,email,telefono,role,pais,idioma } = req.body
+    const {username,email,telefono,role,pais,idioma,password } = req.body
     const newUser = {
         username,
         email,
         telefono,
         role,
         pais,
-        idioma
+        idioma,
+        password
     }
     await pool.query('UPDATE users set ? WHERE id = ?',[newUser,id]);
     req.flash('success',"Editado con Exito!")
