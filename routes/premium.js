@@ -24,7 +24,7 @@ router.get('/all',isLoggedIn, async (req, res) => {
 
 
 router.get('/libros',isLoggedIn,authRole('user_premium'), async (req, res) => {
-    const libros = await pool.query(`SELECT a.id, a.titulo,u.autor,u.facebook,u.whattsap,u.email,p.portada,d.documento FROM archiveros a 
+    const libros = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
     INNER JOIN portadas p ON p.idarchivero = a.id
     INNER JOIN documentos d ON d.idarchivero = a.id
@@ -34,7 +34,7 @@ router.get('/libros',isLoggedIn,authRole('user_premium'), async (req, res) => {
 });
 
 router.get('/revistas',isLoggedIn,authRole('user_premium'), async (req, res) => {
-    const revistas = await pool.query(`SELECT a.id, a.titulo,u.autor,u.facebook,u.whattsap,u.email,p.portada,d.documento FROM archiveros a 
+    const revistas = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
     INNER JOIN portadas p ON p.idarchivero = a.id
     INNER JOIN documentos d ON d.idarchivero = a.id
@@ -44,7 +44,7 @@ router.get('/revistas',isLoggedIn,authRole('user_premium'), async (req, res) => 
 });
 
 router.get('/comics', isLoggedIn,authRole('user_premium'),async (req, res) => {
-    const comics = await pool.query(`SELECT a.id, a.titulo,u.autor,u.facebook,u.whattsap,u.email,p.portada,d.documento FROM archiveros a 
+    const comics = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
     INNER JOIN portadas p ON p.idarchivero = a.id
     INNER JOIN documentos d ON d.idarchivero = a.id
@@ -54,8 +54,9 @@ router.get('/comics', isLoggedIn,authRole('user_premium'),async (req, res) => {
 });
 
 router.get('/musica', isLoggedIn,authRole('user_premium'),async (req, res) => {
-    const musica = await pool.query(`SELECT a.id, a.titulo,u.autor,u.facebook,u.whattsap,u.email,p.portada,d.documento FROM archiveros a 
+    const musica = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento,i.interprete FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
+    INNER JOIN interpretes i ON a.idinterprete = i.id
     INNER JOIN portadas p ON p.idarchivero = a.id
     INNER JOIN documentos d ON d.idarchivero = a.id
     WHERE a.modulos = 'musica'`);
@@ -64,7 +65,7 @@ router.get('/musica', isLoggedIn,authRole('user_premium'),async (req, res) => {
 });
 
 router.get('/peliculas',isLoggedIn,authRole('user_premium'), async (req, res) => {
-    const peliculas = await pool.query(`SELECT a.id, a.titulo,u.autor,u.facebook,u.whattsap,u.email,p.portada,d.documento FROM archiveros a 
+    const peliculas = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
     INNER JOIN portadas p ON p.idarchivero = a.id
     INNER JOIN documentos d ON d.idarchivero = a.id
@@ -74,7 +75,7 @@ router.get('/peliculas',isLoggedIn,authRole('user_premium'), async (req, res) =>
 });
 
 router.get('/videos',isLoggedIn,authRole('user_premium'), async (req, res) => {
-    const videos = await pool.query(`SELECT a.id, a.titulo,u.autor,u.facebook,u.whattsap,u.email,p.portada,d.documento FROM archiveros a 
+    const videos = await pool.query(`SELECT a.id, a.titulo,u.autor,p.portada,d.documento FROM archiveros a 
     INNER JOIN autores u ON a.idautor = u.id
     INNER JOIN portadas p ON p.idarchivero = a.id
     INNER JOIN documentos d ON d.idarchivero = a.id
