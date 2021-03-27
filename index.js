@@ -81,6 +81,7 @@ app.use((req, res, next) => {
 //routes
 app.use(require('./routes'))
 app.use('/',require('./routes/auth'));
+app.use('/comentarios' ,require('./routes/comentarios'));
 app.use('/autores', require('./routes/autores'));
 app.use('/interpretes',require('./routes/interpretes'));
 app.use('/archiveros', require('./routes/archiveros'));
