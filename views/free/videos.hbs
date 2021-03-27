@@ -6,8 +6,10 @@
             <div class="card">
                 <div class="card-body">
                     <h2>{{titulo}}</h2>
-                    <video controls src="../{{documento}}" controlsList="nodownload"
-                        poster="../{{portada}}"></video>
+                    <video controls controlsList="nodownload" poster="../{{portada}}">
+                        <source src="../{{documento}}" type="video/webm">
+                    </video>
+                   
                     <h1>{{autor}}</h1>
                 </div>
             </div>
