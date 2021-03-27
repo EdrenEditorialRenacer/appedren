@@ -34,7 +34,7 @@ router.get('/delete/:id',isLoggedIn,authRole('admin'), async (req,res)=>{
 
 router.get('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=>{
     const { id } = req.params;
-     const interpretes= await pool.query('SELECT * FROM autores WHERE id=?',[id]);
+     const interpretes= await pool.query('SELECT * FROM interpretes WHERE id=?',[id]);
     res.render('interpretes/edit', {inter: interpretes[0]});
 });
 
