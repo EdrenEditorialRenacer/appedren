@@ -44,12 +44,9 @@ router.get('/edit/:id', isLoggedIn, authRole('admin'), async (req, res) => {
 
 router.post('/edit/:id', isLoggedIn, authRole('admin'), async (req, res) => {
     const { id } = req.params;
-    const { autor, facebook, whattsap, email } = req.body
+    const { autor } = req.body
     const newAutor = {
-        autor,
-        facebook,
-        whattsap,
-        email
+        autor
     }
     await pool.query('UPDATE autores set ? WHERE id = ?', [newAutor, id]);
     req.flash('success', "Editado con Exito!")

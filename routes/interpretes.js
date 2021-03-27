@@ -40,12 +40,9 @@ router.get('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=>{
 
 router.post('/edit/:id',isLoggedIn,authRole('admin'),async (req,res)=> {
     const {id} =req.params;
-    const {interprete,facebook,whattsap,email } = req.body
+    const {interprete } = req.body
     const newInterprete = {
         interprete,
-        facebook,
-        whattsap,
-        email
     }
     await pool.query('UPDATE interpretes set ? WHERE id = ?',[newInterprete,id]);
     req.flash('success',"Editado con Exito!")
