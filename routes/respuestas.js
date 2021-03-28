@@ -8,9 +8,9 @@ router.get('/add/:iduser', (req, res) => {
     res.render('respuestas/add',{iduser});
 });
 
-router.post('/add/:iduser', isLoggedIn, async (req, res) => {
-    const { iduser } = req.params;
-    const { respuesta } = req.body;
+router.post('/add', isLoggedIn, async (req, res) => {
+   
+    const { respuesta,iduser } = req.body;
 
     const newRespuesta = {
         respuesta,
