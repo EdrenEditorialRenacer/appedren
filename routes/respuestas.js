@@ -28,7 +28,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
 
 router.get('/',isLoggedIn,authRole('admin'),async (req, res) => {
     const { id } = req.params;
-    const comentarios = await pool.query(`SELECT c.asunto, c.comentario FROM comentarios c 
+    const comentarios = await pool.query(`SELECT c.asunto, c.comentario, c.iduser FROM comentarios c 
                                             INNER JOIN users u ON c.iduser = u.id
   `);
     res.render('respuestas/list', { comentarios });
