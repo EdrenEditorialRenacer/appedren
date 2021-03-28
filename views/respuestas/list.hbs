@@ -1,32 +1,21 @@
-<div class="container p-4">
-    <div class="row">
-        <div class="col-md-4 mx-auto">
-            {{#each comentarios}}
-            <div class="card">
-                <div class="card-body">
-                
-                    <div class="form-group">
-                        <input type="text" name="asunto" class="form-control" id="" value="{{asunto}}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="comentario" class="form-control" cols="10" readonly>
-                            {{comentario}}
-                        </textarea>
-                    </div>
-                    <a href="/respuestas/add/{{iduser}}" class="btn btn-warn">Responder</a>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        aria-expanded="false" style="color:#bda416;">
+        Comentarios
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {{#each comentarios}}
+        <li><a class="dropdown-item" href="/respuestas/comentario/{{iduser}}">Nuevo Mensaje Recivido</a></li>
+        <li>
+            <hr class="dropdown-divider">
+        </li>
 
-                </div>
-            </div>
-
-
-            {{else}}
-            <div class="text-center">
-                <h2>No hay Comentarios Aun</h2>
-            
-            </div>
-            
-            {{/each}}
+        {{else}}
+        <div class="text-center">
+            <h2>No hay Comentarios Aun</h2>
 
         </div>
-    </div>
-</div>
+
+        {{/each}}
+    </ul>
+</li>

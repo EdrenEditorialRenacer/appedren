@@ -34,4 +34,13 @@ router.get('/',isLoggedIn,authRole('admin'),async (req, res) => {
     res.render('respuestas/list', { comentarios });
 });
 
+router.get('/comentario/:iduser',isLoggedIn,authRole('admin'), async (req,res) => {
+    const { iduser } = req.params;
+    const comentarios = await pool.query(`SELECT c.asunto, c.comentario, c.iduser FROM comentarios c 
+    INNER JOIN users u ON c.iduser = u.id WHERE c.iduser = `+iduser+`
+`);
+res.render('respuestas/comentario', {comentario : comentarios[0]});
+
+});
+
 module.exports = router;
