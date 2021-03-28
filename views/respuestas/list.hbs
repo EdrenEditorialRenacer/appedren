@@ -1,21 +1,13 @@
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-        aria-expanded="false" style="color:#bda416;">
-        Comentarios
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        {{#each comentarios}}
-        <li><a class="dropdown-item" href="/respuestas/comentario/{{iduser}}">Nuevo Mensaje Recivido Asunto:{{asunto}}</a></li>
-        <li>
-            <hr class="dropdown-divider">
-        </li>
-
-        {{else}}
-        <div class="text-center">
-            <h2>No hay Comentarios Aun</h2>
-
-        </div>
-
-        {{/each}}
-    </ul>
+{{#each comentarios}}
+<li><a class="dropdown-item" href="/respuestas/comentario/{{iduser}}">Nuevo Mensaje Recivido Asunto:{{asunto}}</a></li>
+<li>
+    <hr class="dropdown-divider">
 </li>
+
+{{else}}
+<div class="text-center">
+    <h2>No hay Comentarios Aun</h2>
+
+</div>
+
+{{/each}}
