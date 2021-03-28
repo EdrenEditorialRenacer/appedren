@@ -1,8 +1,9 @@
 {{#each comentarios}}
-<li><a class="dropdown-item" href="/respuestas/comentario/{{iduser}}">Nuevo Mensaje Recivido Asunto:{{asunto}}</a></li>
-<li>
-    <hr class="dropdown-divider">
-</li>
+<div class="card">
+    <a style="color: yellow;" href="/respuestas/comentario/{{iduser}}">Nuevo Mensaje Recibido Asunto: {{asunto}}</a>
+    <hr style="color: yellow;">
+</div>
+
 
 {{else}}
 <div class="text-center">
