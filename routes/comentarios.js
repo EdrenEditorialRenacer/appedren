@@ -25,7 +25,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
 
 });
 
-router.get('/respuestas/:id',isLoggedIn,authRole('admin'),async (req, res) => {
+router.get('/respuestas/:id',isLoggedIn,async (req, res) => {
     const { id } = req.params;
     const respuestas = await pool.query(`SELECT r.respuesta, r.iduser FROM respuestas r WHERE r.iduser = `+id+`
   `);
