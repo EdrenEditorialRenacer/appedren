@@ -4,16 +4,17 @@
             {{#each comentarios}}
             <div class="card">
                 <div class="card-body">
-
+                
                     <div class="form-group">
-                        <input type="text" name="asunto" id="" value="{{asunto}}" readonly>
+                        <input type="text" name="asunto" class="control-form" id="" value="{{asunto}}" readonly>
                     </div>
                     <div class="form-group">
-                        <textarea name="comentario" cols="10" readonly>
+                        <textarea name="comentario" class="control-form" cols="10" readonly>
                             {{comentario}}
                         </textarea>
                     </div>
                     <a href="/respuestas/add/{{iduser}}" class="btn btn-warn">Responder</a>
+
                 </div>
             </div>
 
