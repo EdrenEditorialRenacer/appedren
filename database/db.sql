@@ -22,7 +22,15 @@ CREATE TABLE comentarios(
     comentario text NOT NULL,
     iduser int (11) NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY (iduser) references users(id),
+    FOREIGN KEY (iduser) references users(id)
+);
+
+CREATE TABLE respuestas(
+    id INT(11) AUTO_INCREMENT,
+    respuesta text NOT NULL,
+    iduser int (11) NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (iduser) references users(id)
 );
 
 

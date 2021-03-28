@@ -25,11 +25,11 @@ router.post('/add', isLoggedIn, async (req, res) => {
 
 });
 
-router.get('/mensajes',isLoggedIn,authRole('admin'),async (req, res) => {
-    const comentarios = await pool.query(`SELECT c.asunto, c.comentario, u.username,u.telefono,u.email FROM comentarios c 
-    INNER JOIN users u ON c.iduser = u.id
+router.get('/respuestas/:id',isLoggedIn,authRole('admin'),async (req, res) => {
+    const { id } = req.params;
+    const respuestas = await pool.query(`SELECT r.respuesta, r.iduser FROM respuestas r WHERE r.iduser = `+id+`
   `);
-    res.render('comentarios/list', { comentarios });
+    res.render('comentarios/list', { respuestas });
 });
 
 module.exports = router;
